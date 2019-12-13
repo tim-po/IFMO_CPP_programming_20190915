@@ -22,7 +22,19 @@
 
 using namespace std;
 
-int t06_sum() {
+void count(int a, int num){
+    if(a != 0){
+        num = num+a;
+        cin >> a;
+        return count(a, num);
+    }else{
+        cout << num;
+    }
+}
 
+int t06_sum() {
+    int a;
+    cin >> a;
+    count(a, 0);
     return 0;
 }

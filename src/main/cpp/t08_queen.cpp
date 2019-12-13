@@ -22,7 +22,41 @@
 
 using namespace std;
 
+bool board[10][10];
+int n = 0;
+
+bool check(int x, int y){
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            if (((x - i == y - j) || (x - i == j - y) || (x == i) || (y == j)) && board[i][j])
+                return false;
+    return true;
+
+
+
+}
+
+int new_q(int x){
+    if (x == n) return 1;
+    int count = 0;
+    for (int j = 0; j < n; j++){
+        if(check(x,j)){
+            board[x][j] = true;
+            count += new_q(x + 1);
+            board[x][j] = false;
+        }
+    }
+    return count;
+
+}
+
 int t08_queen(){
+    cin >> n;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            board[i][j] = false;
+
+    cout << new_q(0);
 
     return 0;
 }

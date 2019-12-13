@@ -28,8 +28,24 @@
 using namespace std;
 
 //function power
+double power(double a, int n){
+    if(abs(n)==1){
+        return a;
+    }else{
+        if(n > 0){
+            return power(a*a, n-1);
+        }else{
+            return power(a/a, n+1);
+        }
+    }
+}
 
 int t05_power() {
+    int n;
+    double a;
+
+    cin >> a >> n;
+    cout << power(a, n);
 
     return 0;
 }

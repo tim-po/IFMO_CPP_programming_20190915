@@ -32,9 +32,20 @@
 
 using namespace std;
 
+double dist(double a, double b, double c, double d){
+    return sqrt((c-a)*(c-a) + (d-b)*(d-b));
+};
+
 //function IsPointInArea
+bool IsPointInArea(double x, double y){
+    return (y >= -x &&  y >= 2*x + 2 && dist(x,y,-1,1) <=2 || y <= -x &&  y <= 2*x + 2 && dist(x,y,-1,1) >=2);
+}
 
 int t04_area() {
+
+    double a,b;
+    cin >> a >> b;
+    cout << IsPointInArea(a,b) ? "YES" : "NO";
 
     return 0;
 }
